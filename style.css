@@ -1,0 +1,341 @@
+
+/* Google fonts, Inter */
+@import url('https://fonts.googleapis.com/css2?family=Festive&family=Inter:wght@400;500;600;700&display=swap');
+
+
+/* * refers to every element on page */
+*, *:before, *:after{
+    box-sizing:border-box;
+    margin: 0;
+    padding:0;
+}
+/* Layout and styles */
+body{
+    height:100vh;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+/* Heading styles */
+h1, p{
+	font-family: 'Inter', sans-serif;
+}
+h1{
+	font-size: 4rem;	
+}
+
+p{
+	font-size: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.content{
+    display:flexbox;
+    flex-direction: column;
+    flex-flow: column wrap;
+    align-items: space-around;
+}
+
+.container{
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    /*left:-1440px;*/
+    animation: slidein 4000ms ease-out;
+   
+}
+
+.circle{
+    margin: 24px;
+    width: 80px;
+    min-width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: relative;
+    animation: pulse 5000ms ease-in-out alternate infinite;
+}
+
+/*n+2 meaning every other item in the list -----google CSS nth child*/
+.circle:nth-child(odd){
+    animation: pulse_even 3000ms 1000ms infinite;
+}
+.circle:nth-child(even){
+    animation: pulse_odd 3000ms 2000ms infinite;
+}
+
+@keyframes slidein{
+    0%{
+        transform:translatey(-1440px)
+    }
+    100%{
+        transform:translatey(0px)
+    }
+
+}
+/*An offset to make the delays negative so that the elements retain 
+stagger but don´t stagger in
+
+.block {animation-delay: calc((var(--index) + 0.25s);
+
+    */
+
+@keyframes pulse_even{
+    0%{
+        background-color:#F4A8C6; left:0px; top:0px;
+    }
+    25%{
+        background-color:#F9C5A0; left:0px; top:-10px;
+    }
+    50%{
+        background-color:#F4A8C6; left:0px; top:0px;
+    }
+    75%{
+        background-color:#FB619F; left:0px; top:10px;
+    }
+    100%{
+        background-color:#F4A8C6; left:0px; top:0px;
+    }
+
+}
+
+@keyframes pulse_odd{
+    0%{
+        background-color:#5DE0DE; left:0px; top:0px;
+    }
+    25%{
+        background-color:#FEFD7D; left:0px; top:-10px;
+    }
+    50%{
+        background-color:#5DE0DE; left:0px; top:0px;
+    }
+    75%{
+        background-color:#01A3E6; left:0px; top:10px;
+    }
+    100%{
+        background-color:#5DE0DE; left:0px; top:0px;
+    }
+
+}
+/* Tried making the drop shadow on img-front as a div first, then
+changed it to a pseudo element.
+
+.shadow{
+ 
+    background-color:#F4BDE6;
+    position: absolute;
+    width: 656px;
+    height: 656px;
+    left: 64px;
+    top: -129px;
+    z-index: -1;
+}*/
+
+.img-front{
+    position: relative;
+    width: 50%;
+    /*z-index: 1; the z-index had to be on the img not the div*/
+
+}
+
+.img-front img{
+    height: auto;
+    width: 100%;
+    z-index: 1;
+
+}
+
+.img-front:before{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #F4A8C6;
+    left: -2rem;
+    top: -2rem;
+    z-index: -1;
+    transition: all 300ms ease-in-out;
+    /*left:-100px;
+    animation: slideleft 2s ease forwards infinite;*/
+}
+
+
+.img-front:hover:before{
+    left: 0;
+    top: 0;
+}
+
+/*Notes to self, possibly use for the image: the animation-fill-mode: both; 
+makes the div the style values set by the first and last keyframes.
+
+div {
+  width: 100px;
+  height: 100px;
+  background: red;
+  position: relative;
+  animation: slidein 3s;
+ animation-fill-mode: both;
+}
+
+@keyframes slidein {
+  from {left: 0px;}
+  to {left: 200px;}
+}
+*/
+
+.flex{
+    display:flex;
+    justify-content: center;
+    padding: 4rem 2rem;
+}
+
+.textside{
+    padding: 2rem;
+}
+
+.button{
+    display: flex;
+    justify-content: space-between;
+    width: 12rem;
+    position: relative;
+
+}
+
+.btn img{
+    position: relative;
+    top:26px;
+    left:32px;
+    z-index:2;
+}
+
+.btn{
+    position: relative;
+    background:rgba(1, 163, 230, 0.65);
+    width:60px;
+    height:60px;
+    top:26px;
+    border-radius:50%;
+    z-index: 1; 
+
+}
+
+
+.btn:before{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #F4A8C6;
+    left: 10px;
+    top: 10px;
+    border-radius:50%;
+    opacity: 80%;
+    z-index: -1;
+    transition: all 300ms ease-in-out;
+}
+
+
+.btn:hover:before{
+    left: 0;
+    top: 0;
+    margin-left: ;
+}
+
+
+/*
+.btn{
+    background:#410ada;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    margin: 1rem;
+    z-index: 1;
+}
+
+button.btn.img{
+    position: absolute;
+    left: 40px;
+    top: 40px;
+}
+
+.round{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    position: absolute;
+}
+.round:nth-child(1){
+    background:#DFC353;
+    left:0px;
+    bottom:0px;
+}
+
+.round:nth-child(2){
+    background:#F4EAC3;
+    left:0px;
+    top: 0px;
+}*/
+
+/*
+@keyframes rotate{
+    0%{
+        transform:rotate(0deg)
+    }
+    50%{
+        transform:rotate(0deg)
+    }
+    100%{
+        transform:rotate(360deg)
+    }
+}
+
+@keyframes slideleft{
+    0%{
+        transform:translatex(0px);
+    }
+    25%{
+        transform:translatex(-100px);
+        background:#F4EAC3;
+    }
+    50%{
+        transform:translatex(0px);
+    }
+    100%{
+        
+    }
+}
+
+@keyframes slideright{
+    0%{
+        transform:translatex(0px);
+    }
+    25%{
+        transform:translatex(100px);
+        background: #DFC353;
+    }
+    50%{
+        transform:translatex(0px);
+    }
+    100%{
+        
+    }
+}*/
+
+/*
+from the girl in the video
+
+.circle:nth-child(1){
+   
+    left:-100px;
+    animation: slideleft 2s ease forwards infinite;
+}
+
+.circle:nth-child(2){
+    background:#F4EAC3;
+    left:100px;
+    top:-80px;
+    animation: slideright 2s ease forwards infinite;
+    -------------------------------
+}*/
+
